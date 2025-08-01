@@ -42,7 +42,7 @@ ModbusRTUClientClass::~ModbusRTUClientClass()
 {
 }
 
-int ModbusRTUClientClass::begin(unsigned long baudrate, uint16_t config)
+int ModbusRTUClientClass::begin(unsigned long baudrate, rs485_serial_config_t config)
 {
   _rs485->setDelays(ModbusRTUDelay::preDelay(baudrate), ModbusRTUDelay::postDelay(baudrate));
 
@@ -55,7 +55,7 @@ int ModbusRTUClientClass::begin(unsigned long baudrate, uint16_t config)
   return 1;
 }
 
-int ModbusRTUClientClass::begin(RS485Class& rs485, unsigned long baudrate, uint16_t config)
+int ModbusRTUClientClass::begin(RS485Class& rs485, unsigned long baudrate, rs485_serial_config_t config)
 {
   _rs485 = &rs485;
   return begin(baudrate, config);
